@@ -1,0 +1,8 @@
+.cache/
+target/
+DOS_SANTOS-Gabriel
+
+compile_commands.json
+config.lua
+*.pdf
+*.png

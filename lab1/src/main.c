@@ -64,7 +64,7 @@ int blas2_runs(config_t cfg)
     vector_t* x = vector_rand_init(len);
     vector_t* y = vector_rand_init(len);
     if (!A || !x || !y) {
-        return fprintf(stderr, BOLD RED "error:" RESET " failed matrix/vector allocation.\n") -1;
+        return fprintf(stderr, BOLD RED "error:" RESET " failed matrix/vector allocation.\n") - 1;
     }
 
     if (cfg.is_verbose && len <= 12) {
@@ -104,7 +104,7 @@ int blas3_runs(config_t cfg)
     matrix_t* B = matrix_rand_init(len, len);
     matrix_t* C = matrix_ones(len, len);
     if (!A || !B || !C) {
-        return fprintf(stderr, BOLD RED "error:" RESET " failed matrix allocation.\n") -1;
+        return fprintf(stderr, BOLD RED "error:" RESET " failed matrix allocation.\n") - 1;
     }
 
     if (cfg.is_verbose && len <= 12) {
@@ -138,30 +138,27 @@ int main(int argc, char* argv[argc + 1])
     }
 
     FILE* ofp = cfg.output_filename != NULL ? fopen(cfg.output_filename, "wb") : stdout;
-    if (!ofp) return -1;
-    fprintf(ofp, "#%s; %s; %s; %s; %s; %s; %s; %s; %s; %s; %s\n",
-            "title", "BLAS_lvl", "threads", "elems", "min", "mean",
-            "max", "median", "stddevp", "GIB/s", "GFLOP/s");
+    if (!ofp)
+        return -1;
+    fprintf(ofp, "#%s; %s; %s; %s; %s; %s; %s; %s; %s; %s; %s\n", "title", "BLAS_lvl", "threads",
+            "elems", "min", "mean", "max", "median", "stddevp", "GIB/s", "GFLOP/s");
     fclose(ofp);
 
     srand(0);
     if (cfg.blas_level == BLAS_ONE || cfg.blas_level == BLAS_ONE_TWO ||
-        cfg.blas_level == BLAS_ONE_THREE || cfg.blas_level == BLAS_ALL)
-    {
+        cfg.blas_level == BLAS_ONE_THREE || cfg.blas_level == BLAS_ALL) {
         blas1_runs(cfg);
     }
-    
+
     if (cfg.blas_level == BLAS_TWO || cfg.blas_level == BLAS_ONE_TWO ||
-        cfg.blas_level == BLAS_TWO_THREE || cfg.blas_level == BLAS_ALL)
-    {
+        cfg.blas_level == BLAS_TWO_THREE || cfg.blas_level == BLAS_ALL) {
         blas2_runs(cfg);
     }
 
     if (cfg.blas_level == BLAS_THREE || cfg.blas_level == BLAS_ONE_THREE ||
-        cfg.blas_level == BLAS_TWO_THREE || cfg.blas_level == BLAS_ALL)
-    {
+        cfg.blas_level == BLAS_TWO_THREE || cfg.blas_level == BLAS_ALL) {
         blas3_runs(cfg);
     }
 
-    return 0;    
+    return 0;
 }

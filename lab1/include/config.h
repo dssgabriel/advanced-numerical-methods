@@ -3,8 +3,8 @@
 #include "utils.h"
 
 #include <stdbool.h>
-#include <stdint.h>
 #include <stddef.h>
+#include <stdint.h>
 
 #define DEFAULT_LEN 65536
 #define DEFAULT_THREADS 8
@@ -28,7 +28,10 @@ typedef struct config_s {
     char* output_filename;
     union {
         size_t len;
-        struct { size_t cols; size_t rows; } pair;
+        struct {
+            size_t cols;
+            size_t rows;
+        } pair;
     };
 } config_t;
 

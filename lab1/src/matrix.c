@@ -1,4 +1,5 @@
 #include "matrix.h"
+
 #include "utils.h"
 
 #include <assert.h>
@@ -15,7 +16,8 @@ vector_t* vector_zeroes(size_t len)
 matrix_t* matrix_zeroes(size_t rows, size_t cols)
 {
     matrix_t* self = malloc(sizeof(matrix_t));
-    if (!self) return NULL;
+    if (!self)
+        return NULL;
 
     self->rows = rows;
     self->cols = cols;
@@ -37,7 +39,8 @@ vector_t* vector_ones(size_t len)
 matrix_t* matrix_ones(size_t rows, size_t cols)
 {
     matrix_t* self = malloc(sizeof(matrix_t));
-    if (!self) return NULL;
+    if (!self)
+        return NULL;
 
     self->rows = rows;
     self->cols = cols;
@@ -63,7 +66,8 @@ vector_t* vector_rand_init(size_t len)
 matrix_t* matrix_rand_init(size_t rows, size_t cols)
 {
     matrix_t* self = malloc(sizeof(matrix_t));
-    if (!self) return NULL;
+    if (!self)
+        return NULL;
 
     self->rows = rows;
     self->cols = cols;
@@ -82,7 +86,8 @@ matrix_t* matrix_rand_init(size_t rows, size_t cols)
 
 void vector_deinit(vector_t* self)
 {
-    if (!self) return;
+    if (!self)
+        return;
     matrix_deinit(self);
 }
 
@@ -98,7 +103,8 @@ void matrix_deinit(matrix_t* self)
 
 void vector_transpose(vector_t* self)
 {
-    if (!self) return;
+    if (!self)
+        return;
 
     size_t tmp = self->rows;
     self->rows = self->cols;
@@ -116,17 +122,19 @@ void matrix_transpose(matrix_t const* self, matrix_t* transposed)
 
 void print_vector(vector_t const* self, char const* name)
 {
-    if (!self) return;
+    if (!self)
+        return;
     print_matrix(self, name);
 }
 
 void print_matrix(matrix_t const* self, char const* name)
 {
-    if (!self) return;
+    if (!self)
+        return;
 
     char shift[32];
     size_t i;
-    for (i = 0; i < (name != NULL ? strlen(name) + 3: 4); ++i) {
+    for (i = 0; i < (name != NULL ? strlen(name) + 3 : 4); ++i) {
         shift[i] = ' ';
     }
     shift[i] = '\0';
@@ -135,25 +143,30 @@ void print_matrix(matrix_t const* self, char const* name)
     for (size_t i = 0; i < self->rows; ++i) {
         if (self->rows == 1) {
             printf("⟮ ");
-        } else if (i == 0) {
+        }
+        else if (i == 0) {
             printf("⎛ ");
-        } else if (i != self->rows - 1) {
+        }
+        else if (i != self->rows - 1) {
             printf("%s⎜ ", shift);
-        } else {
+        }
+        else {
             printf("%s⎝ ", shift);
         }
 
         for (size_t j = 0; j < self->cols; ++j) {
             if (self->data[i * self->cols + j] >= 0) {
                 printf(" %2.6lf ", self->data[i * self->cols + j]);
-            } else {
+            }
+            else {
                 printf("%2.6lf ", self->data[i * self->cols + j]);
             }
 
             if (self->rows != 1) {
                 if (i == 0 && j == self->cols - 1) {
                     printf("⎞\n");
-                } else if (i == self->rows - 1 && j == self->cols - 1) {
+                }
+                else if (i == self->rows - 1 && j == self->cols - 1) {
                     printf("⎠\n");
                 }
             }
@@ -161,24 +174,28 @@ void print_matrix(matrix_t const* self, char const* name)
 
         if (self->rows == 1) {
             printf("⟯\n");
-        } else if (i != 0 && i != self->rows - 1) {
+        }
+        else if (i != 0 && i != self->rows - 1) {
             printf("⎟\n");
         }
     }
 }
 
-size_t matrix_nb_elems(matrix_t const* self) {
+size_t matrix_nb_elems(matrix_t const* self)
+{
     return self->rows * self->cols;
 }
 
-size_t vector_nb_elems(vector_t const* self) {
+size_t vector_nb_elems(vector_t const* self)
+{
     return matrix_nb_elems(self);
 }
 
 matrix_t* matrix_copy(matrix_t const* self)
 {
     matrix_t* copy = matrix_zeroes(self->rows, self->cols);
-    if (!copy) return NULL;
+    if (!copy)
+        return NULL;
 
     for (size_t i = 0; i < self->rows * self->cols; ++i) {
         copy->data[i] = self->data[i];

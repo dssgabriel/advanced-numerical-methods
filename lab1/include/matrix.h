@@ -38,7 +38,6 @@ vector_t* vector_ones(size_t len);
  **/
 matrix_t* matrix_ones(size_t rows, size_t cols);
 
-
 /**
  * Creates a new column vector of `len` elements, initialized with random values
  * ranging in the interval of ]-1.0, 1.0[.

@@ -22,8 +22,8 @@ typedef struct stats_s {
     double ops_throughput;
 } stats_t;
 
-stats_t* stats_init(char const* title, uint8_t blas_lvl, size_t nb_threads,
-                    size_t nb_elems, size_t nb_flops);
+stats_t* stats_init(char const* title, uint8_t blas_lvl, size_t nb_threads, size_t nb_elems,
+                    size_t nb_flops);
 
 void stats_compute(stats_t* self);
 

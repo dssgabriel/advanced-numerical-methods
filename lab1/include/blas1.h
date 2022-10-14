@@ -57,7 +57,7 @@ double parallel_blas1_ddot(size_t len, double const* x, double const* y);
 
 /**
  * Computes the double precision Euclidean/L2 norm of a vector.
- * 
+ *
  * The `dnrm1` routine performs a vector reduction operation defined as:
  *   res = ||x||
  *
@@ -70,7 +70,7 @@ double blas1_dnrm2(size_t len, double const* x);
 /**
  * Computes the double precision Euclidean/L2 norm of a vector in parallel using
  * OpenMP.
- * 
+ *
  * The `dnrm1` routine performs a vector reduction operation defined as:
  *   res = ||x||
  *
@@ -82,7 +82,7 @@ double parallel_blas1_dnrm2(size_t len, double const* x);
 
 /**
  * Finds the double precision maximum element of a vector.
- * 
+ *
  * The `dnrm1` routine performs a vector reduction operation defined as:
  *   res = max(x)
  *
@@ -90,7 +90,7 @@ double parallel_blas1_dnrm2(size_t len, double const* x);
  * - `x` is a vector.
  * - `len` is the number of elements in the vector.
  *
- * The implementation of this routine is not branchless, but with compiler 
+ * The implementation of this routine is not branchless, but with compiler
  * optimizations enabled, the generated code is unrolled and uses
  * architecture-specific instructions that perform the comparisons without any
  * branching.
@@ -100,7 +100,7 @@ double blas1_dmax(size_t len, double const* x);
 /**
  * Finds the double precision maximum element of a vector in parallel using
  * OpenMP.
- * 
+ *
  * The `dnrm1` routine performs a vector reduction operation defined as:
  *   res = max(x)
  *
@@ -108,7 +108,7 @@ double blas1_dmax(size_t len, double const* x);
  * - `x` is a vector.
  * - `len` is the number of elements in the vector.
  *
- * The implementation of this routine is not branchless, but with compiler 
+ * The implementation of this routine is not branchless, but with compiler
  * optimizations enabled, the generated code is unrolled and uses
  * architecture-specific instructions that perform the comparisons without any
  * branching.

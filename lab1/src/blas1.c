@@ -11,7 +11,7 @@ void blas1_daxpy(size_t len, double a, double const* x, double* y)
 
 void parallel_blas1_daxpy(size_t len, double a, double const* x, double* y)
 {
-    #pragma omp parallel for
+#pragma omp parallel for
     for (size_t i = 0; i < len; ++i) {
         y[i] += a * x[i];
     }
@@ -32,7 +32,7 @@ double parallel_blas1_ddot(size_t len, double const* x, double const* y)
 {
     double res = 0.0;
 
-    #pragma omp parallel for reduction(+:res)
+#pragma omp parallel for reduction(+ : res)
     for (size_t i = 0; i < len; ++i) {
         res += x[i] * y[i];
     }
@@ -55,7 +55,7 @@ double parallel_blas1_dnrm2(size_t len, double const* x)
 {
     double res = 0.0;
 
-    #pragma omp parallel for reduction(+:res)
+#pragma omp parallel for reduction(+ : res)
     for (size_t i = 0; i < len; ++i) {
         res += x[i] * x[i];
     }
@@ -78,7 +78,7 @@ double parallel_blas1_dmax(size_t len, double const* x)
 {
     double res = x[0];
 
-    #pragma omp parallel for reduction(max:res)
+#pragma omp parallel for reduction(max : res)
     for (size_t i = 0; i < len; ++i) {
         res = (x[i] > res) ? x[i] : res;
     }

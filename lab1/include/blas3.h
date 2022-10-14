@@ -17,16 +17,8 @@
  * - `n` is the number of elements in the columns of the `A` matrix and in the
  *   rows of the `B` matrix.
  **/
-void blas3_dgemm(
-    size_t l,
-    size_t m,
-    size_t n,
-    double alpha,
-    double const* restrict A,
-    double const* restrict B,
-    double beta,
-    double* restrict C
-);
+void blas3_dgemm(size_t l, size_t m, size_t n, double alpha, double const* restrict A,
+                 double const* restrict B, double beta, double* restrict C);
 
 /**
  * Computes a double precision matrix-matrix product and adds the result to the
@@ -43,13 +35,5 @@ void blas3_dgemm(
  * - `n` is the number of elements in the columns of the `A` matrix and in the
  *   rows of the `B` matrix.
  **/
-void parallel_blas3_dgemm(
-    size_t l,
-    size_t m,
-    size_t n,
-    double alpha,
-    double const* restrict A,
-    double const* restrict B,
-    double beta,
-    double* restrict C
-);
+void parallel_blas3_dgemm(size_t l, size_t m, size_t n, double alpha, double const* restrict A,
+                          double const* restrict B, double beta, double* restrict C);
